@@ -4,6 +4,9 @@
 # It requires 1 parapmeter :
 #	- the name of the future MatLab file
 #
+# There is optional arguments :
+#	-f : make a function file instead of a script file
+#
 # If the name is already taken
 # It'll add "_new" or "_new{i}" to the name
 #
@@ -12,7 +15,7 @@
 #	- fill it with a template
 #	- open nano
 #
-#-------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------
 #
 # made by :
 #	Gély Léandre :: https://github.com/Zaynn-lea
@@ -28,9 +31,9 @@
 if [[ $# -gt 0 ]]
 then
 
+	has_doc=0
 	is_func=0
 
-	name=$1
 	ext='.m'
 
 	# taking care of the options (-something)
@@ -38,21 +41,38 @@ then
 	while getopts d:f o
 	do
 		case $o in
-			(d) ;;		# TODO : Documentation
+			(d) has_doc=1;;
 			(f) is_func=1;;
 
 			(*) usage
 		esac
 	done
 
+	# Caching the file name amoung all the arguments
+
+	for var in $@
+	do
+		if [[ $var:0:1 != '-' ]]
+		then
+			name=$var
+		fi
+	done
+
 	# dealing with the possibility of a file having the same name
 
-	if [[ -e $1.m ]]
+	if [[ -e ${name}${ext} ]]
 	then
-		name=${1}_new.m
-	else
-		name=${1}.m
+		name=${name}_new
+
+		i=0
+		while [[ -e ${name}${ext} ]]
+		do
+			name=${name%$((i-1))}${i}
+			i=$((i+1))
+		done
 	fi
+
+	name=${name}${ext}
 
 
 	# +---------------+
@@ -62,6 +82,12 @@ then
 	touch $name
 
 	exec 3>& $name
+
+	if [[ $has_doc -eq 1 ]]
+	then
+		# TODO : Documentation
+		echo 'temp'
+	fi
 
 	if [[ $is_func -eq 1 ]]
 	then
