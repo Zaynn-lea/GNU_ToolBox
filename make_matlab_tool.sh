@@ -1,14 +1,18 @@
 
 # Utility script to help build matlab scripts
 #
+#
 # It requires 1 parapmeter :
+#
 #	- the name of the future MatLab file
+#	  If the name is already taken
+# 	  It'll add "_new" or "_new{i}" to the name
+#
 #
 # There is optional arguments :
-#	-f : make a function file instead of a script file
 #
-# If the name is already taken
-# It'll add "_new" or "_new{i}" to the name
+#	- -f : make a function file instead of a script file
+#
 #
 # It will :
 #	- create a file

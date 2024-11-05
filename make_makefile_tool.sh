@@ -1,11 +1,13 @@
 
 # Utility script to help build makefiles
 #
-# It requires 1 parameters :
-#	- the name of the future makefiles
 #
-# If the name is already taken
-# it'll add "_new" or "_new{i}" to the name
+# There is optinoal arguments :
+#
+#	- the name of the future makefiles, by default it is "Makefile"
+# 	  If the name is already taken
+# 	  It'll add "_new" or "_new{i}" to the name
+#
 #
 # It will :
 #	- create a file
@@ -25,16 +27,18 @@
 #!/bin/bash
 
 
-if [[ $# -eq 1 ]]
+if [[ $# -le 1 ]]
 then
-
-	name=$1
 
 	# Dealing with the possibility of the name being already taken
 
-	if [[ -e $name ]]
+	if [[ $# -eq 0 ]]
 	then
-		name=${name}_new
+		name="Makefile"
+
+	elif [[ -e $1 ]]
+	then
+		name=${1}_new
 
 		i=0
 		while [[ -e ${name} ]]
@@ -42,6 +46,8 @@ then
 			name=${name%$((i-1))}${i}
 			i=$((i+1))
 		done
+	else
+		$name=$1
 	fi
 
 
@@ -70,7 +76,7 @@ then
 
 else
 	# if no file name is given or additionnal parameters
-	echo "You have to give one and only one parametter : the name of the file" >&2
+	echo "You can't pass more than one arguments" >&2
 	exit 1
 fi
 

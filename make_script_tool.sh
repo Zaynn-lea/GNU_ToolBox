@@ -1,11 +1,13 @@
 
 # Utility script to help build other scripts
 #
-# It requires 1 parameters :
-#	- the name of the future script
 #
-# If the name is already taken
-# it'll add "_new" or "_new{i}" to the name
+# It requires 1 parameters :
+#
+#	- the name of the future script
+#	  If the name is already taken
+#	  It'll add "_new" or "_new{i}" to the name
+#
 #
 # It will :
 #	- create a file
