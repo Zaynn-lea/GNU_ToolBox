@@ -12,6 +12,7 @@
 # There is optional arguments :
 #
 #	- -f : make a function file instead of a script file
+#	- -d : add a documentation template at the start of the file
 #
 #
 # It will :

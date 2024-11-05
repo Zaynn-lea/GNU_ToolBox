@@ -9,6 +9,10 @@
 #	  It'll add "_new" or "_new{i}" to the name
 #
 #
+# There is optional arguments :
+#	- -d : add a documentation template at the start of the file
+#
+#
 # It will :
 #	- create a file
 #	- give it execution write
@@ -30,8 +34,21 @@
 if [[ $# -eq 1 ]]
 then
 
+	has_doc=0
+
 	name=$1
 	ext='.sh'
+
+	# taking care of the options (-someting)
+
+	while getopts d o
+	do
+		case $o in
+			(d) has_doc=1;;
+
+			(*) usage
+		esac
+	done
 
 	# Dealing with the possibility of a file having the same name
 
@@ -53,6 +70,12 @@ then
 	# +------------------+
 	# |   Main script :  |
 	# +------------------+
+
+	if [[ $has_doc -ed 1 ]]
+	then
+		# TODO : documentaiton
+		echo 'temps'
+	fi
 
 	touch $name
 	chmod a+x $name
