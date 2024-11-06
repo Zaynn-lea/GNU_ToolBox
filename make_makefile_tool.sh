@@ -20,8 +20,8 @@
 #	Gely Léandre :: https://github.com/Zaynn-lea
 #
 # date :
-#	from :	23 / 10 / 2024
-#	to   :	 5 / 11 / 2024
+#	started      :	23 / 10 / 2024
+#	last updated :	 6 / 11 / 2024
 
 
 #!/bin/bash
@@ -63,11 +63,11 @@ then
 	echo "GCCFlags = -Wall -g" >> $name
 	echo "" >> $name
 	echo "" >> $name
-	echo "all:\t" >> $name
+	echo -e "all:\t" >> $name
 	echo "" >> $name
 	echo "" >> $name
 	echo "clean:" >> $name
-	echo "\trm *.o" >> $name
+	echo -e "\trm *.o" >> $name
 	echo "" >> $name
 
 	exec 3>&-

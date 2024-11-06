@@ -10,6 +10,7 @@
 #
 #
 # There is optional arguments :
+#
 #	- -d : add a documentation template at the start of the file
 #
 #
@@ -24,19 +25,18 @@
 #	Gely Léandre :: https://github.com/Zaynn-lea
 #
 # date :
-#	from :	10 / 10 / 2024 ?
-#	to   :	 5 / 11 / 2024
+#	startded       :  10 / 10 / 2024 ?
+#	last updated   :   6 / 11 / 2024
 
 
 #!/bin/bash
 
 
-if [[ $# -eq 1 ]]
+if [[ $# -ge 1 ]]
 then
 
 	has_doc=0
 
-	name=$1
 	ext='.sh'
 
 	# taking care of the options (-someting)
@@ -48,6 +48,16 @@ then
 
 			(*) usage
 		esac
+	done
+
+	# Catching the file name amoung the options
+
+	for var in $@
+	do
+		if [[ $var:0:1 != '-' ]]
+		then
+			name=$var
+		fi
 	done
 
 	# Dealing with the possibility of a file having the same name
@@ -71,16 +81,30 @@ then
 	# |   Main script :  |
 	# +------------------+
 
-	if [[ $has_doc -ed 1 ]]
-	then
-		# TODO : documentaiton
-		echo 'temps'
-	fi
-
 	touch $name
 	chmod a+x $name
 
 	exec 3>& $name
+
+	if [[ has_doc -eq 1 ]]
+	then
+		# Documentation template
+
+		today=$(date +%d' / '%m' / '%y)
+
+		echo "" >> $name
+		echo "# " >> $name
+		echo "#" >> $name
+		echo "#--------------------------------------------------------------------------------" >> $name
+		echo "#" >> $name
+		echo "# Made by :" >> $name
+		echo -e "#\t- "$USER >> $name
+		echo "#" >> $name
+		echo "# Date :" >> $name
+		echo -e "#\tstarted      :  "$today >> $name
+		echo -e "#\tlast updated :  "$today >> $name
+		echo "" >> $name
+	fi
 
 	echo "" >> $name
 	echo "#!/bin/bash" >> $name
@@ -92,7 +116,7 @@ then
 
 else
 	# if no file name is given or additionnal parameters
-	echo "You have to give one and only one parametter : the name of the file" >&2
+	echo "You have to give at least on parameter, the name of the file" >&2
 	exit 1
 fi
 

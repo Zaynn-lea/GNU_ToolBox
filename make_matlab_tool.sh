@@ -26,8 +26,8 @@
 #	Gély Léandre :: https://github.com/Zaynn-lea
 #
 # date :
-#	from :   4 / 11 / 2024
-#	to   :	 5 / 11 / 2024
+#	started      :   4 / 11 / 2024
+#	last updated :	 6 / 11 / 2024
 
 
 #!/bin/bash
@@ -90,18 +90,36 @@ then
 
 	if [[ $has_doc -eq 1 ]]
 	then
-		# TODO : Documentation
-		echo 'temp'
+		# Documentation template
+
+		today=$(date +%d' / '%m' / '%y)
+
+		echo "" >> $name
+		echo "% " >> $name
+		echo "%" >> $name
+		echo "%----------------------------------------------------------------------------" >> $name
+		echo "%" >> $name
+		echo "% Made by :" >> $name
+		echo -e "%\t- "$USER >> $name
+		echo "%" >> $name
+		echo "% Date :" >> $name
+		echo -e "%\tstarted      :  "$today >> $name
+		echo -e "%\tlast updated :  "$today >> $name
+		echo "" >> $name
 	fi
 
 	if [[ $is_func -eq 1 ]]
 	then
+		# Function template
+
 		echo "" >> $name
 		echo "function [] = ${name##.*}()" >> $name
 		echo "" >> $name
 		echo "end" >> $name
 		echo "" >> $name
 	else
+		# Script template
+
 		echo "" >> $name
 		echo "% Cleaning the environement" >> $name
 		echo "" >> $name
