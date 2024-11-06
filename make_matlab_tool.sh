@@ -113,8 +113,8 @@ then
 		# Function template
 
 		echo "" >> $name
-		echo "function [] = ${name##.*}()" >> $name
-		echo "" >> $name
+		echo "function [] = ${name%%.*}()" >> $name
+		echo -e "\t" >> $name
 		echo "end" >> $name
 		echo "" >> $name
 	else
