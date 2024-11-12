@@ -18,7 +18,7 @@
 #
 # Date :
 #	started      :  06 / 11 / 24
-#	last updated :  06 / 11 / 24
+#	last updated :  08 / 11 / 24
 
 
 #!/bin/bash
@@ -65,11 +65,12 @@ fi
 
 if [[ $is_all -eq 1 ]]
 then
-	tty
+	echo -e $(tty)'\t\t'${USER}
+
 	ls_options='-ailF'
 fi
 
-ls ${ls_options}
+ls ${ls_options} --color=auto
 
 if [[ $has_git -eq 1 ]]
 then
