@@ -24,7 +24,7 @@
 #
 # Date :
 #	started      :  06 / 11 / 24
-#	last updated :  12 / 11 / 24
+#	last updated :  13 / 11 / 24
 
 
 #!/bin/bash
@@ -58,6 +58,8 @@ done
 # +------------------+
 
 # Scripts tool aliases :
+
+alias "mkc"=${here}'/make_C_tool.sh'
 
 alias "mkmakef"=${here}'/make_makefile_tool.sh'
 

@@ -26,6 +26,8 @@ See the import_tools.sh documentation for more details and options.
 
 All script have a their own more specific documentation at the begining of each files
 
+- make_C_tool.sh	: tool to make C files and projects
+
 - make_makefile_tool.sh	: tool to make Makefiles for C projects
 
 - make_matlab_tool.sh	: tool to make matlab scripts and functions
