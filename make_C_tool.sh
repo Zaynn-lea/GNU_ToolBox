@@ -11,7 +11,8 @@
 #
 # There is optional arguments :
 #
-#	- -m : add a module with at least one function and the coresponding header file
+#	- -m : add a module with at least one function (void by default)
+#		and the coresponding header file
 #	- -d : add a documentation template at the start of the file
 #
 #
@@ -40,16 +41,15 @@ then
 	is_module=0
 
 	ext='.c'
+	ext_2='.h'
 
 	# taking care of the options (-something)
 
-	while getopts d:f o
+	while getopts d:m o
 	do
 		case $o in
 			(d) has_doc=1;;
 			(m) is_module=1;;
-
-			(*) usage
 		esac
 	done
 
@@ -98,7 +98,7 @@ then
 		echo "/*" >> $name
 		echo "" >> $name
 		echo "" >> $name
-		echo "----------------------------------------------------------------------------" >> $name
+		echo "--------------------------------------------------------------------------------" >> $name
 		echo "" >> $name
 		echo "Made by :" >> $name
 		echo -e "\t- "$USER >> $name
@@ -110,15 +110,37 @@ then
 		echo "" >> $name
 	fi
 
-	if [[ $is_func -eq 1 ]]
+	if [[ $is_module -eq 1 ]]
 	then
+		f_name=${name%%.*}
+
 		# Module template
 
 		echo "" >> $name
-		echo "function [] = ${name%%.*}()" >> $name
+		echo "void ${f_name}()" >> $name
+		echo "{" >> $name
 		echo -e "\t" >> $name
-		echo "end" >> $name
+		echo "}" >> $name
 		echo "" >> $name
+
+
+		# Taking care of the header
+
+		m_name=${f_name}${ext_2}
+
+		touch $m_name
+
+		exec 4>& $m_name
+
+		# Header templates
+
+		echo "" >>$m_name
+		echo "void ${f_name}() ;" >>$m_name
+		echo "" >>$m_name
+
+
+		exec 3>&-
+
 	else
 		# Program template
 
