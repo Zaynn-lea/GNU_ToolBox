@@ -42,6 +42,7 @@ do
 			case ${arg:$i:1} in
 				(a) is_all=1;;
 				(l) is_light=1;;
+
 				(g) has_git=1;;
 				(m) has_make=1;;
 			esac

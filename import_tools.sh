@@ -16,6 +16,7 @@
 # Opions :
 #
 #	- -s : add shorter aliases
+#	- -a : add more aliases if you don't want to use the options of the new commands
 #
 #--------------------------------------------------------------------------------
 #
@@ -31,6 +32,7 @@
 
 
 has_shorts=0
+has_all=0
 
 here='~'
 
@@ -41,10 +43,11 @@ for arg in $@
 do
 	if [[ ${arg:0:1} = '-' ]]
 	then
-		for (( i=1 ; i<${arg#} ; i++ ))
+		for (( i=1 ; i<${#arg} ; i++ ))
 		do
 			case ${arg:$i:1} in
 				(s) has_shorts=1;;
+				(a) has_all=1;;
 			esac
 		done
 	else
@@ -57,26 +60,57 @@ done
 # |   Main script :  |
 # +------------------+
 
-# Scripts tool aliases :
+# Scripts tools :
 
-alias "mkc"=${here}'/make_C_tool.sh'
+mkc=${here}'/make_C_tool.sh'
 
-alias "mkmakef"=${here}'/make_makefile_tool.sh'
+mkmakef=${here}'/make_makefile_tool.sh'
 
-alias "mkmatlab"=${here}'/make_matlab_tool.sh'
+mkmatlab=${here}'/make_matlab_tool.sh'
 
-alias "mkscript"=${here}'/make_script_tool.sh'
+mkscript=${here}'/make_script_tool.sh'
 
-alias "pclear"=${here}'/pretty_clear_tool.sh'
+pclear=${here}'/pretty_clear_tool.sh'
 
 
-# short aliases :
+# Aliases :
+
+alias "mkc"=$mkc
+
+alias "mkmakef"=$mkmakef
+
+alias "mkmatlab"=$mkmattlab
+
+alias "mkscript"=$mkscript
+
+alias "pclear"=$pclear
+
+
+# Short aliases :
 
 if [[ has_shorts -eq 1 ]]
 then
-	alias "mkmkf"=mkmakef
-	alias "mkml"=mkmatlab
-	alias "mksh"=mkscript
-	alias "pcls"=pclear
+	alias "mkmkf"=$mkmakef
+	alias "mkml"=$mkmatlab
+	alias "mksh"=$mkscript
+	alias "pcls"=$pclear
 fi
 
+
+# All aliases if you don't wanna use options :
+
+if [[ has_all -eq 1 ]]
+then
+	alias "mkcd"=${mkmatlab}' -d'
+	alias "mkcm"=${mkmatlab}' -f'
+
+	alias "mkmatlabd"=${mkmatlab}' -d'
+	alias "mkmatlabf"=${mkmatlab}' -f'
+
+	alias "mkscriptd"=${mkscript}' -d'
+
+	alias "pcleara"=${pclear}' -a'
+	alias "pclearg"=${pclear}' -g'
+	alias "pclearl"=${pclear}' -l'
+	alias "pclearm"=${pclear}' -m'
+fi
