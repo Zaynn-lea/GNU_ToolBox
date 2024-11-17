@@ -41,25 +41,24 @@ then
 
 	ext='.m'
 
-	# taking care of the options (-something)
-
-	while getopts d:f o
-	do
-		case $o in
-			(d) has_doc=1;;
-			(f) is_func=1;;
-
-			(*) usage
-		esac
-	done
 
 	# Caching the file name amoung all the arguments
 
-	for var in $@
+
+	# taking care of the options (-something) and other
+	for arg in $@
 	do
-		if [[ $var:0:1 != '-' ]]
+		if [[ ${arg:0:1} = '-' ]]
 		then
-			name=$var
+			for (( i=1 ; i<${#arg} ; i++ ))
+			do
+				case ${arg:$i:1} in
+					(d) has_doc=1 ;;
+					(f) is_func=1 ;;
+				esac
+			done
+		else
+			name=$arg
 		fi
 	done
 

@@ -79,7 +79,7 @@ alias "mkc"=$mkc
 
 alias "mkmakef"=$mkmakef
 
-alias "mkmatlab"=$mkmattlab
+alias "mkmatlab"=$mkmatlab
 
 alias "mkscript"=$mkscript
 

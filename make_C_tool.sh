@@ -1,5 +1,5 @@
 
-# Utility script to help build C and C** projects
+# Utility script to help build C and C++ projects
 #
 #
 # It requires 1 parapmeter :
@@ -43,23 +43,23 @@ then
 	ext='.c'
 	ext_2='.h'
 
-	# taking care of the options (-something)
-
-	while getopts d:m o
-	do
-		case $o in
-			(d) has_doc=1;;
-			(m) is_module=1;;
-		esac
-	done
 
 	# Caching the file name amoung all the arguments
 
-	for var in $@
+	# taking care of the options (-something) and file name
+	for arg in $@
 	do
-		if [[ $var:0:1 != '-' ]]
+		if [[ ${arg:0:1} = '-' ]]
 		then
-			name=$var
+			for (( i=1 ; i<${#arg} ; i++ ))
+			do
+				case ${arg:$1:1} in
+					(d) has_doc=1 ;;
+					(a) has_all=1 ;;
+				esac
+			done
+		else
+			name=$arg
 		fi
 	done
 

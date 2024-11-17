@@ -39,26 +39,22 @@ then
 
 	ext='.sh'
 
-	# taking care of the options (-someting)
-
-	while getopts d o
-	do
-		case $o in
-			(d) has_doc=1;;
-
-			(*) usage
-		esac
-	done
 
 	# Catching the file name amoung the options
 
-	for var in $@
+	for arg in $@
 	do
-		if [[ $var:0:1 != '-' ]]
+		if [[ ${arg:0:1} = '-' ]]
+		else
+			for (( i=1 ; i<${arg#} ; i++ ))
+			do
+				(d) has_doc=1 ;;
+			done
 		then
-			name=$var
+			name=$arg
 		fi
 	done
+
 
 	# Dealing with the possibility of a file having the same name
 
