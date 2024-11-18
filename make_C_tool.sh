@@ -30,7 +30,7 @@
 #
 # date :
 #	started      :  13 / 11 / 2024
-#	last updated :	13 / 11 / 2024
+#	last updated :	18 / 11 / 2024
 
 
 #!/bin/bash
@@ -50,16 +50,24 @@ then
 	ext_2='.h'
 
 
-	# Caching the file name amoung all the arguments
+	# Parser to take care of the parameters
+	# takes care of multi-char options, single-char options and standards parameters, in this order
 
-	# taking care of the options (-s and --something) and file name
 	for arg in $@
 	do
 		if [[ ${arg:0:2} = '--' ]]
 		then
 			# Multi-character options :
-			case ${arg:2} in
-				(cpp) is_cpp=1 ;;
+
+			# Check and search for an = (option of the form --something=some_other_thing
+			i=2
+			while test ${arg:$i:1} != '=' -a $i -lt ${#arg}
+			do
+				i=$(( $i+1 ))
+			done
+
+			case ${arg:2:$(( $i-2 ))} in
+				(cpp)  is_cpp=1 ;;
 			esac
 
 		elif [[ ${arg:0:1} = '-' ]]
@@ -69,8 +77,8 @@ then
 			for (( i=1 ; i<${#arg} ; i++ ))
 			do
 				case ${arg:$i:1} in
-					(d) has_doc=1 ;;
-					(a) has_all=1 ;;
+					(d) has_doc=1   ;;
+					(m) is_module=1 ;;
 				esac
 			done
 		else
@@ -80,13 +88,22 @@ then
 		fi
 	done
 
-	# dealing with the possibility of a file having the same name
+
+	# Taking care of the name :
 
 	if [[ $is_cpp -eq 1 ]]
 	then
 		ext='.cpp'
 	fi
 
+	# We can't have an empty filename
+	if [[ ${#name} -eq 0 ]]
+	then
+		echo "You must give a name to your file/project." >&2
+		exit 1
+	fi
+
+	# Dealing with the possibility of a file having the same name
 	if [[ -e ${name}${ext} ]]
 	then
 		name=${name}_new
@@ -105,7 +122,7 @@ then
 
 	if [[ -e ${name%%.*} ]]
 	then
-		echo "The headerfile name is already taken, therefore it can't be created." > 2
+		echo "The headerfile name is already taken, therefore it can't be created." >&2
 		exit 1
 	fi
 
