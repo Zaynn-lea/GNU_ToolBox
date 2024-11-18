@@ -37,3 +37,11 @@ All script have a their own more specific documentation at the begining of each 
 - pretty_clear_tool.sh	: tool to clear and add headers to your CMD
 
 - import_tools.sh	: script containing all the aliases and shortcuts
+
+
+
+## Credits :
+
+made by Gély Léandre :: https://github.com/Zaynn-lea
+
+project started early october 2024
