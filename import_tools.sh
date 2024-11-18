@@ -76,6 +76,7 @@ pclear=${here}'/pretty_clear_tool.sh'
 # Aliases :
 
 alias "mkc"=$mkc
+alias "mkcpp"=${mkc}' --cpp'
 
 alias "mkmakef"=$mkmakef
 
@@ -103,6 +104,8 @@ if [[ has_all -eq 1 ]]
 then
 	alias "mkcd"=${mkmatlab}' -d'
 	alias "mkcm"=${mkmatlab}' -f'
+	alias "mkcppd"=${mkmatlab}' --cpp -d'
+	alias "mkcppm"=${mkmatlab}' --cpp -f'
 
 	alias "mkmatlabd"=${mkmatlab}' -d'
 	alias "mkmatlabf"=${mkmatlab}' -f'

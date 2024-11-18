@@ -11,9 +11,11 @@
 #
 # There is optional arguments :
 #
+#	- -d : add a documentation template at the start of the file
 #	- -m : add a module with at least one function (void by default)
 #		and the coresponding header file
-#	- -d : add a documentation template at the start of the file
+#
+#	- --cpp : switch from C to C++
 #
 #
 # It will :
@@ -36,9 +38,13 @@
 
 if [[ $# -gt 0 ]]
 then
+	# options variables
 
 	has_doc=0
 	is_module=0
+
+	is_cpp=0
+
 
 	ext='.c'
 	ext_2='.h'
@@ -46,24 +52,40 @@ then
 
 	# Caching the file name amoung all the arguments
 
-	# taking care of the options (-something) and file name
+	# taking care of the options (-s and --something) and file name
 	for arg in $@
 	do
-		if [[ ${arg:0:1} = '-' ]]
+		if [[ ${arg:0:2} = '--' ]]
 		then
+			# Multi-character options :
+			case ${arg:2} in
+				(cpp) is_cpp=1 ;;
+			esac
+
+		elif [[ ${arg:0:1} = '-' ]]
+		then
+			# Single-character options :
+
 			for (( i=1 ; i<${#arg} ; i++ ))
 			do
-				case ${arg:$1:1} in
+				case ${arg:$i:1} in
 					(d) has_doc=1 ;;
 					(a) has_all=1 ;;
 				esac
 			done
 		else
+			# normal arguments and parameters :
+
 			name=$arg
 		fi
 	done
 
 	# dealing with the possibility of a file having the same name
+
+	if [[ $is_cpp -eq 1 ]]
+	then
+		ext='.cpp'
+	fi
 
 	if [[ -e ${name}${ext} ]]
 	then
@@ -79,6 +101,13 @@ then
 
 	name=${name}${ext}
 
+	# If the header name exist, we can't create it :
+
+	if [[ -e ${name%%.*} ]]
+	then
+		echo "The headerfile name is already taken, therefore it can't be created." > 2
+		exit 1
+	fi
 
 	# +---------------+
 	# |  Main Script  |
@@ -112,8 +141,6 @@ then
 
 	if [[ $is_module -eq 1 ]]
 	then
-		f_name=${name%%.*}
-
 		# Module template
 
 		echo "" >> $name
@@ -126,13 +153,14 @@ then
 
 		# Taking care of the header
 
+		f_name=${name%%.*}
 		m_name=${f_name}${ext_2}
 
 		touch $m_name
 
 		exec 4>& $m_name
 
-		# Header templates
+		# Header template
 
 		echo "" >>$m_name
 		echo "void ${f_name}() ;" >>$m_name
@@ -145,7 +173,12 @@ then
 		# Program template
 
 		echo "" >> $name
-		echo "#include <stdio>" >> $name
+		if [[ is_cpp -eq 1 ]]
+		then
+			echo "#include <iostream>" >> $name
+		else
+			echo "#include <stdio>" >> $name
+		fi
 		echo "" >> $name
 		echo "" >> $name
 		echo "int main()" >> $name
