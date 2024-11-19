@@ -30,7 +30,7 @@
 #
 # date :
 #	started      :  13 / 11 / 2024
-#	last updated :	18 / 11 / 2024
+#	last updated :	19 / 11 / 2024
 
 
 #!/bin/bash
@@ -38,7 +38,7 @@
 
 if [[ $# -gt 0 ]]
 then
-	# options variables
+	# Options variables
 
 	has_doc=0
 	is_module=0
@@ -53,7 +53,7 @@ then
 	# Parser to take care of the parameters
 	# takes care of multi-char options, single-char options and standards parameters, in this order
 
-	for arg in $@
+	for arg in "$@"
 	do
 		if [[ ${arg:0:2} = '--' ]]
 		then

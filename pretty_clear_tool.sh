@@ -18,11 +18,13 @@
 #
 # Date :
 #	started      :  06 / 11 / 24
-#	last updated :  12 / 11 / 24
+#	last updated :  19 / 11 / 24
 
 
 #!/bin/bash
 
+
+# Options variables
 
 is_all=0
 is_light=0
@@ -30,10 +32,13 @@ is_light=0
 has_git=0
 has_make=0
 
-# Taking care of the options (-something)
+
+# Parser to take care of the parameters
+# takes care of multi-char options, single-char options and standards parameters, in this order
 
 # I had to do the parcer myself since I wasn't able to do it using getopts
-for arg in $@
+
+for arg in "$@"
 do
 	if [[ ${arg:0:1} = '-' ]]
 	then

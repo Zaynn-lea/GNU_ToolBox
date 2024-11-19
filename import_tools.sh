@@ -25,21 +25,23 @@
 #
 # Date :
 #	started      :  06 / 11 / 24
-#	last updated :  18 / 11 / 24
+#	last updated :  19 / 11 / 24
 
 
 #!/bin/bash
 
+
+# Options variables
 
 has_shorts=0
 has_all=0
 
 here='~'
 
-# Taking care of the options (-something)
+# Parser to take care of the parameters
+# takes care of multi-char options, single-char options and standards parameters, in this order
 
-# Same parser as in pretty_clear_tool.sh
-for arg in $@
+for arg in "$@"
 do
 	if [[ ${arg:0:1} = '-' ]]
 	then

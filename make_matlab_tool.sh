@@ -26,8 +26,8 @@
 #	Gély Léandre :: https://github.com/Zaynn-lea
 #
 # date :
-#	started      :   4 / 11 / 2024
-#	last updated :	 6 / 11 / 2024
+#	started      :   4 / 11 / 224
+#	last updated :	19 / 11 / 2024
 
 
 #!/bin/bash
@@ -35,6 +35,7 @@
 
 if [[ $# -gt 0 ]]
 then
+	# Options variables
 
 	has_doc=0
 	is_func=0
@@ -42,11 +43,10 @@ then
 	ext='.m'
 
 
-	# Caching the file name amoung all the arguments
+	# Parser to take care of the parameters
+	# takes care of multi-char options, single-char options and standards parameters, in this order
 
-
-	# taking care of the options (-something) and other
-	for arg in $@
+	for arg in "$@"
 	do
 		if [[ ${arg:0:1} = '-' ]]
 		then

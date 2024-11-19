@@ -26,7 +26,7 @@
 #
 # date :
 #	startded       :  10 / 10 / 2024 ?
-#	last updated   :   6 / 11 / 2024
+#	last updated   :  19 / 11 / 2024
 
 
 #!/bin/bash
@@ -34,23 +34,25 @@
 
 if [[ $# -ge 1 ]]
 then
+	# Options variables
 
 	has_doc=0
 
 	ext='.sh'
 
 
-	# Catching the file name amoung the options
+	# Parser to take care of the parameters
+	# takes care of multi-char options, single-char options and standards parametters, in this order
 
-	for arg in $@
+	for arg in "$@"
 	do
 		if [[ ${arg:0:1} = '-' ]]
-		else
-			for (( i=1 ; i<${arg#} ; i++ ))
+		then
+			for (( i=1 ; i<${#arg} ; i++ ))
 			do
 				(d) has_doc=1 ;;
 			done
-		then
+		else
 			name=$arg
 		fi
 	done
