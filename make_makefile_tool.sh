@@ -2,7 +2,7 @@
 # Utility script to help build makefiles
 #
 #
-# There is optinoal arguments :
+# There are optinoal arguments :
 #
 #	- the name of the future makefiles, by default it is "Makefile"
 # 	  If the name is already taken

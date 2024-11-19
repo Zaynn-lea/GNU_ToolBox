@@ -11,6 +11,14 @@
 #	- Clean the console
 #	- put a ls -l as header at the top
 #
+#
+# There are optional arguments :
+#
+#	- -l : a lighter header
+#	- -a : a heavier header with more informations, takes priority over -l
+#	- -m : execute a make after the pretty clear, when working in C/C++ for example
+#	- -g : execute a git status after the pretty clear
+#
 #--------------------------------------------------------------------------------
 #
 # Made by :

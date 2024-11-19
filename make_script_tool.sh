@@ -17,6 +17,7 @@
 # It will :
 #	- create a file
 #	- give it execution write
+#	- fill it with a template
 #	- open nano
 #
 #---------------------------------------------------------
