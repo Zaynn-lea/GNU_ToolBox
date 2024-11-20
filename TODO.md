@@ -40,11 +40,3 @@ TODO list for my GNU and bash toolbox.
 
 
 ## STARTED :
-
-- documentation for functions
-	Description :
-		Add documentation to functions when using --func or -m with -d in make_C_tool.sh
-	Started by :
-		Gély Léandre
-	Started the :
-		20 / 11 / 2024

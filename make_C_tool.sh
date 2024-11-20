@@ -11,7 +11,7 @@
 #
 # There are optional arguments :
 #
-#	- -d : add a documentation template at the start of the file
+#	- -d : add a documentation template at the start of the file and of each fonctions
 #	- -m : add a module with at least one function (void by default)
 #		and the coresponding header file
 #
@@ -46,11 +46,11 @@ function analyse_save_list() {
 	# TODO : function documentation
 
 	# To treat the parameters as one big string, to parse them manually
-	raw_list="$*"
+	local raw_list="$*"
 
-	temp=0
+	local temp=0
 
-	temp_file=".TEMPORAIRE/.temporaire__make_C_tool__header.tmp"
+	local temp_file="~/GNU_ToolBox/.TEMPORAIRE/.temporaire__make_C_tool__header.tmp"
 
 
 	# We don't want a huge filled file so we empty it each time
@@ -212,6 +212,14 @@ then
 		echo "" 		>> $name
 		echo "void ${f_name}()" >> $name
 		echo "{" 		>> $name
+
+		if [[ $has_doc -eq 1 ]]
+		then
+			echo -e "\t/*" >> $name
+			echo -e "\t"   >> $name
+			echo -e "\t*/" >> $name
+		fi
+
 		echo -e "\t" 		>> $name
 		echo "}" 		>> $name
 		echo "" 		>> $name
@@ -237,7 +245,7 @@ then
 			const_name="__"${f_name^^}"__EXIST__"
 
 			echo "#ifndef "$const_name >> $m_name
-			echo "" 		   >> $m_name
+			echo ""			   >> $m_name
 			echo "#define "$const_name >> $m_name
 
 		fi
@@ -264,12 +272,13 @@ then
 		touch $m_name
 
 		exec 4> $m_name
-		exec 10< .TEMPORAIRE/.temporaire__make_C_tool__header.tmp
+		exec 10< ~/GNU_ToolBox/.TEMPORAIRE/.temporaire__make_C_tool__header.tmp
 
 
 		echo "" >> $name
 
 		echo "" >> $m_name
+
 		if [[ $is_cpp -eq 1 ]]
 		then
 			echo "#pragma once"	   >> $m_name
@@ -286,6 +295,17 @@ then
 		do
 			echo $line   >> $name
 			echo "{"     >> $name
+
+			# Documentation template
+			# TODO : add documentation based on the signature ? Maybe ?
+
+			if [[ $has_doc -eq 1 ]]
+			then
+				echo -e "\t/*" >> $name
+				echo -e "\t"   >> $name
+				echo -e "\t*/" >> $name
+			fi
+
 			echo -e "\t" >> $name
 
 			if [[ ${line%%' '*} != "void" ]]
@@ -337,6 +357,17 @@ then
 				echo ""      >> $name
 				echo $line   >> $name
 				echo "{"     >> $name
+
+				# Documentation template
+				# TODO : add documentation based on the signature ? Maybe ?
+
+				if [[ $has_doc -eq 1 ]]
+				then
+					echo -e "\t/*" >> $name
+					echo -e "\t"   >> $name
+					echo -e "\t*/" >> $name
+				fi
+
 				echo -e "\t" >> $name
 
 				if [[ ${line%%' '*} != "void" ]]
