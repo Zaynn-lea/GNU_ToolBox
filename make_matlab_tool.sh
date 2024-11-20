@@ -27,7 +27,7 @@
 #
 # date :
 #	started      :   4 / 11 / 224
-#	last updated :	19 / 11 / 2024
+#	last updated :	20 / 11 / 2024
 
 
 #!/bin/bash
@@ -93,48 +93,54 @@ then
 
 		today=$(date +%d' / '%m' / '%y)
 
-		echo "" >> $name
+		echo ""   >> $name
 		echo "%%" >> $name
-		echo "" >> $name
-		echo "" >> $name
+
+		if [[ $is_func -eq 1 ]]
+		then
+			echo "Functions to " >> $name
+		fi
+
+		echo ""   >> $name
+		echo ""   >> $name
 		echo "----------------------------------------------------------------------------" >> $name
-		echo "" >> $name
-		echo "Made by :" >> $name
-		echo -e "\t- "$USER >> $name
-		echo "" >> $name
-		echo "Date :" >> $name
+		echo "" 			   >> $name
+		echo "Made by :" 		   >> $name
+		echo -e "\t- "$USER 		   >> $name
+		echo "" 			   >> $name
+		echo "Date :"			   >> $name
 		echo -e "\tstarted      :  "$today >> $name
 		echo -e "\tlast updated :  "$today >> $name
-		echo "%%" >> $name
-		echo "" >> $name
+		echo "%%" 			   >> $name
+		echo "" 			   >> $name
 	fi
 
 	if [[ $is_func -eq 1 ]]
 	then
 		# Function template
 
-		echo "" >> $name
+		echo "" 			   >> $name
 		echo "function [] = ${name%%.*}()" >> $name
-		echo -e "\t" >> $name
-		echo "end" >> $name
-		echo "" >> $name
+		echo -e "\t" 			   >> $name
+		echo "end" 			   >> $name
+		echo "" 			   >> $name
 	else
 		# Script template
 
 		echo "" >> $name
 		echo "% Cleaning the environement" >> $name
-		echo "" >> $name
-		echo "clf" >> $name
-		echo "clear" >> $name
-		echo "clc" >> $name
-		echo "" >> $name
-		echo "hold on" >> $name
-		echo "" >> $name
-		echo "" >> $name
-		echo "% +------------------+" >> $name
-		echo "% |   Main Script :  |" >> $name
-		echo "% +------------------+" >> $name
-		echo "" >> $name
+		echo "" 			   >> $name
+		echo "clf" 			   >> $name
+		echo "clear" 			   >> $name
+		echo "clc"			   >> $name
+		echo "" 			   >> $name
+		echo "hold on" 			   >> $name
+		echo "" 			   >> $name
+		echo "" 			   >> $name
+		echo "% +------------------+" 	   >> $name
+		echo "% |   Main Script :  |" 	   >> $name
+		echo "% +------------------+" 	   >> $name
+		echo "" 			   >> $name
 	fi
 
 	exec 3>&-

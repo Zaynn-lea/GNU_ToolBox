@@ -27,7 +27,7 @@
 #
 # date :
 #	startded       :  10 / 10 / 2024 ?
-#	last updated   :  19 / 11 / 2024
+#	last updated   :  20 / 11 / 2024
 
 
 #!/bin/bash
@@ -91,23 +91,23 @@ then
 
 		today=$(date +%d' / '%m' / '%y)
 
-		echo "" >> $name
+		echo ""   >> $name
 		echo "# " >> $name
-		echo "#" >> $name
+		echo "#"  >> $name
 		echo "#--------------------------------------------------------------------------------" >> $name
-		echo "#" >> $name
-		echo "# Made by :" >> $name
-		echo -e "#\t- "$USER >> $name
-		echo "#" >> $name
-		echo "# Date :" >> $name
-		echo -e "#\tstarted      :  "$today >> $name
-		echo -e "#\tlast updated :  "$today >> $name
-		echo "" >> $name
+		echo "#" 				>> $name
+		echo "# Made by :" 			>> $name
+		echo -e "#\t- "$USER 			>> $name
+		echo "#" 				>> $name
+		echo "# Date :" 			>> $name
+		echo -e "#\tstarted      :  "$today 	>> $name
+		echo -e "#\tlast updated :  "$today 	>> $name
+		echo "" 				>> $name
 	fi
 
-	echo "" >> $name
+	echo ""		   >> $name
 	echo "#!/bin/bash" >> $name
-	echo "" >> $name
+	echo "" 	   >> $name
 
 	exec 3>&-
 

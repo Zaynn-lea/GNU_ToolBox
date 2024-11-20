@@ -25,7 +25,7 @@
 #
 # Date :
 #	started      :  06 / 11 / 24
-#	last updated :  19 / 11 / 24
+#	last updated :  20 / 11 / 24
 
 
 #!/bin/bash
@@ -48,8 +48,8 @@ do
 		for (( i=1 ; i<${#arg} ; i++ ))
 		do
 			case ${arg:$i:1} in
-				(s) has_shorts=1;;
-				(a) has_all=1;;
+				(s) has_shorts=1 ;;
+				(a) has_all=1    ;;
 			esac
 		done
 	else
@@ -105,9 +105,9 @@ fi
 if [[ has_all -eq 1 ]]
 then
 	alias "mkcd"=${mkmatlab}' -d'
-	alias "mkcm"=${mkmatlab}' -f'
+	alias "mkcm"=${mkmatlab}' -m'
 	alias "mkcppd"=${mkmatlab}' --cpp -d'
-	alias "mkcppm"=${mkmatlab}' --cpp -f'
+	alias "mkcppm"=${mkmatlab}' --cpp -m'
 
 	alias "mkmatlabd"=${mkmatlab}' -d'
 	alias "mkmatlabf"=${mkmatlab}' -f'

@@ -30,14 +30,6 @@ TODO list for my GNU and bash toolbox.
 	Asked the :
 		19 / 11 / 2024
 
-- better header template
-	Description :
-		Add ifndef / pragma once in the header templates for module in C/C++
-	Asked by :
-		Gély Léandre
-	Asked the :
-		20 / 11 / 2024
-
 - Vim or Nano or ...
 	Description :
 		Add an option to choose the editor of choice / par defaut
@@ -49,8 +41,18 @@ TODO list for my GNU and bash toolbox.
 
 ## STARTED :
 
-- --func support in make_C_tool.sh
+- better header template
+	Description :
+		Add ifndef / pragma once in the header templates for module in C/C++
 	Started by :
 		Gély Léandre
-	Started :
-		19 / 11 / 2024
+	Started the :
+		20 / 11 / 2024
+
+- documentation for functions
+	Description :
+		Add documentation to functions when using --func or -m with -d in make_C_tool.sh
+	Started by :
+		Gély Léandre
+	Started the :
+		20 / 11 / 2024

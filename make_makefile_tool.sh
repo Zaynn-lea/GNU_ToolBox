@@ -21,7 +21,7 @@
 #
 # date :
 #	started      :	23 / 10 / 2024
-#	last updated :	 6 / 11 / 2024
+#	last updated :	20 / 11 / 2024
 
 
 #!/bin/bash
@@ -59,16 +59,16 @@ then
 
 	exec 3>& $name
 
-	echo "" >> $name
+	echo "" 		   >> $name
 	echo "GCCFlags = -Wall -g" >> $name
-	echo "" >> $name
-	echo "" >> $name
-	echo -e "all:\t" >> $name
-	echo "" >> $name
-	echo "" >> $name
-	echo "clean:" >> $name
-	echo -e "\trm *.o" >> $name
-	echo "" >> $name
+	echo "" 		   >> $name
+	echo "" 		   >> $name
+	echo -e "all:\t" 	   >> $name
+	echo ""			   >> $name
+	echo "" 		   >> $name
+	echo "clean:" 		   >> $name
+	echo -e "\trm *.o" 	   >> $name
+	echo "" 		   >> $name
 
 	exec 3>&-
 

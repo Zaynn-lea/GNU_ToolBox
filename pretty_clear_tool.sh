@@ -26,7 +26,7 @@
 #
 # Date :
 #	started      :  06 / 11 / 24
-#	last updated :  19 / 11 / 24
+#	last updated :  20 / 11 / 24
 
 
 #!/bin/bash
@@ -53,11 +53,11 @@ do
 		for (( i=1 ; i<${#arg} ; i++ ))
 		do
 			case ${arg:$i:1} in
-				(a) is_all=1;;
-				(l) is_light=1;;
+				(a) is_all=1   ;;
+				(l) is_light=1 ;;
 
-				(g) has_git=1;;
-				(m) has_make=1;;
+				(g) has_git=1  ;;
+				(m) has_make=1 ;;
 			esac
 		done
 	fi

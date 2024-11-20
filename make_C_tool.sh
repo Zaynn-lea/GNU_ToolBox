@@ -189,32 +189,32 @@ then
 
 		today=$(date +%d' / '%m' / '%y)
 
-		echo "" >> $name
+		echo ""   >> $name
 		echo "/*" >> $name
-		echo "" >> $name
-		echo "" >> $name
+		echo ""   >> $name
+		echo ""   >> $name
 		echo "--------------------------------------------------------------------------------" >> $name
-		echo "" >> $name
-		echo "Made by :" >> $name
-		echo -e "\t- "$USER >> $name
-		echo "" >> $name
-		echo "Date :" >> $name
+		echo "" 			   >> $name
+		echo "Made by :" 		   >> $name
+		echo -e "\t- "$USER 		   >> $name
+		echo "" 			   >> $name
+		echo "Date :" 			   >> $name
 		echo -e "\tstarted      :  "$today >> $name
 		echo -e "\tlast updated :  "$today >> $name
-		echo "*/" >> $name
-		echo "" >> $name
+		echo "*/" 			   >> $name
+		echo "" 			   >> $name
 	fi
 
 	if [[ $is_module -eq 1 && $has_func -ne 1 ]]
 	then
 		# Module template
 
-		echo "" >> $name
+		echo "" 		>> $name
 		echo "void ${f_name}()" >> $name
-		echo "{" >> $name
-		echo -e "\t" >> $name
-		echo "}" >> $name
-		echo "" >> $name
+		echo "{" 		>> $name
+		echo -e "\t" 		>> $name
+		echo "}" 		>> $name
+		echo "" 		>> $name
 
 
 		# Taking care of the header
@@ -228,9 +228,9 @@ then
 
 		# Header template
 
-		echo "" >>$m_name
-		echo "void ${f_name}() ;" >>$m_name
-		echo "" >>$m_name
+		echo "" 		  >> $m_name
+		echo "void ${f_name}() ;" >> $m_name
+		echo "" 		  >> $m_name
 
 
 		exec 4>&-
@@ -282,7 +282,7 @@ then
 		then
 			echo "#include <iostream>" >> $name
 		else
-			echo "#include <stdio>" >> $name
+			echo "#include <stdio>"    >> $name
 		fi
 
 		echo "" >> $name
@@ -312,13 +312,13 @@ then
 			exec 10<&-
 		fi
 
-		echo "" >> $name
-		echo "int main()" >> $name
-		echo "{" >> $name
-		echo -e "\t" >> $name
-		echo -e "\treturn 0;" >> $name
-		echo "}" >> $name
-		echo "" >> $name
+		echo "" 		>> $name
+		echo "int main()" 	>> $name
+		echo "{" 		>> $name
+		echo -e "\t" 		>> $name
+		echo -e "\treturn 0;"	>> $name
+		echo "}"		>> $name
+		echo "" 		>> $name
 	fi
 
 	exec 3>&-
