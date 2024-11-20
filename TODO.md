@@ -30,6 +30,22 @@ TODO list for my GNU and bash toolbox.
 	Asked the :
 		19 / 11 / 2024
 
+- better header template
+	Description :
+		Add ifndef / pragma once in the header templates for module in C/C++
+	Asked by :
+		Gély Léandre
+	Asked the :
+		20 / 11 / 2024
+
+- Vim or Nano or ...
+	Description :
+		Add an option to choose the editor of choice / par defaut
+	Asked by :
+		Gély Léandre
+	Asked the :
+		20 / 11 / 2024
+
 
 ## STARTED :
 
