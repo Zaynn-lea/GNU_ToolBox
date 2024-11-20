@@ -41,14 +41,6 @@ TODO list for my GNU and bash toolbox.
 
 ## STARTED :
 
-- better header template
-	Description :
-		Add ifndef / pragma once in the header templates for module in C/C++
-	Started by :
-		Gély Léandre
-	Started the :
-		20 / 11 / 2024
-
 - documentation for functions
 	Description :
 		Add documentation to functions when using --func or -m with -d in make_C_tool.sh

@@ -109,7 +109,7 @@ then
 
 			# Check and search for an = (option of the form --something=some_other_thing
 			i=2
-			while test ${arg:$i:1} != '=' -a $i -lt ${#arg}
+			while [[ ${arg:$i:1} != '=' && $i -lt ${#arg} ]]
 			do
 				i=$(( $i+1 ))
 			done
@@ -228,10 +228,31 @@ then
 
 		# Header template
 
+		echo "" >> $m_name
+
+		if [[ $is_cpp -eq 1 ]]
+		then
+			echo "#pragma once"	   >> $m_name
+		else
+			const_name="__"${f_name^^}"__EXIST__"
+
+			echo "#ifndef "$const_name >> $m_name
+			echo "" 		   >> $m_name
+			echo "#define "$const_name >> $m_name
+
+		fi
+
+		echo "" 		  >> $m_name
 		echo "" 		  >> $m_name
 		echo "void ${f_name}() ;" >> $m_name
 		echo "" 		  >> $m_name
 
+		if [[ $is_cpp -ne 1 ]]
+		then
+			echo ""		>> $m_name
+			echo "#endif"	>> $m_name
+			echo "" 	>> $m_name
+		fi
 
 		exec 4>&-
 	elif [[ $is_module -eq 1 && $has_func -eq 1 ]]
@@ -243,12 +264,23 @@ then
 		touch $m_name
 
 		exec 4> $m_name
+		exec 10< .TEMPORAIRE/.temporaire__make_C_tool__header.tmp
 
 
 		echo "" >> $name
-		echo "" >> $m_name
 
-		exec 10< .TEMPORAIRE/.temporaire__make_C_tool__header.tmp
+		echo "" >> $m_name
+		if [[ $is_cpp -eq 1 ]]
+		then
+			echo "#pragma once"	   >> $m_name
+		else
+			const_name="__"${f_name^^}"__EXIST__"
+
+			echo "#ifndef "$const_name >> $m_name
+			echo "" 		   >> $m_name
+			echo "#define "$const_name >> $m_name
+
+		fi
 
 		while read -u 10 line
 		do
@@ -270,8 +302,15 @@ then
 			echo ""        >> $m_name
 		done
 
-		exec 10<&-
+		if [[ $is_cpp -ne 1 ]]
+		then
+		echo "#endif"	>> $m_name
+		echo "" 	>> $m_name
 
+		fi
+
+
+		exec 10<&-
 		exec 4>&-
 	else
 		# Program template
