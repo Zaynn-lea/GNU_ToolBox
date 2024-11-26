@@ -68,7 +68,7 @@ done
 # |   Main script :  |
 # +------------------+
 
-ls_options='-lt'
+ls_options='-lhrt'
 
 clear
 
