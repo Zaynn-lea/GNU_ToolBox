@@ -339,9 +339,9 @@ then
 
 		if [[ is_cpp -eq 1 ]]
 		then
-			echo "#include <iostream>" >> $name
+			echo "#include <iostream.h>" >> $name
 		else
-			echo "#include <stdio>"    >> $name
+			echo "#include <stdio.h>"    >> $name
 		fi
 
 		echo "" >> $name
@@ -386,6 +386,7 @@ then
 		echo "int main()" 	>> $name
 		echo "{" 		>> $name
 		echo -e "\t" 		>> $name
+		echo ""			>> $name
 		echo -e "\treturn 0;"	>> $name
 		echo "}"		>> $name
 		echo "" 		>> $name
