@@ -26,7 +26,7 @@
 #
 # Date :
 #	started      :  06 / 11 / 24
-#	last updated :  20 / 11 / 24
+#	last updated :  26 / 11 / 24
 
 
 #!/bin/bash
@@ -68,7 +68,7 @@ done
 # |   Main script :  |
 # +------------------+
 
-ls_options='-l'
+ls_options='-lt'
 
 clear
 
@@ -81,7 +81,7 @@ if [[ $is_all -eq 1 ]]
 then
 	echo -e $(tty)'\t\t'${USER}
 
-	ls_options='-ailF'
+	ls_options='-ahilrtF'
 fi
 
 ls ${ls_options} --color=auto
