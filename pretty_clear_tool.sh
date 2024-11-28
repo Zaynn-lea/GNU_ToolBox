@@ -94,16 +94,23 @@ do
 	line='-'${line}
 done
 
-echo "++"${line}
 
 if [[ $is_all -eq 1 ]]
 then
 	echo -e $(tty)'\t\t'${USER}
 fi
 
-ls ${ls_options} --color=always | sed -e 's/.*/||  &/g'
 
-echo "++"${line}
+if [[ $is_light -eq 1 && $is_all -ne 1 ]]
+then
+	ls ${ls_options} --color=always
+else
+	echo "++"${line}
+
+	ls ${ls_options} --color=always | sed -e 's/.*/||  &/g'
+
+	echo "++"${line}
+fi
 
 
 if [[ $has_git -eq 1 ]]
