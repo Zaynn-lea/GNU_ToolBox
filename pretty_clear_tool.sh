@@ -26,7 +26,7 @@
 #
 # Date :
 #	started      :  06 / 11 / 24
-#	last updated :  26 / 11 / 24
+#	last updated :  27 / 11 / 24
 
 
 #!/bin/bash
@@ -68,9 +68,7 @@ done
 # |   Main script :  |
 # +------------------+
 
-ls_options='-lhrt'
-
-clear
+ls_options='-lh'
 
 if [[ $is_light -eq 1 ]]
 then
@@ -79,12 +77,34 @@ fi
 
 if [[ $is_all -eq 1 ]]
 then
-	echo -e $(tty)'\t\t'${USER}
-
-	ls_options='-ahilrtF'
+	ls_options='-ahilF'
 fi
 
-ls ${ls_options} --color=auto
+
+clear
+
+
+max_line_length=$(( $(ls ${ls_options} | sed -e 's/.*/||  &\t/g' | wc -L) - 2 ))
+
+
+line=''
+
+for (( i=0 ; i<${max_line_length} ; i++ ))
+do
+	line='-'${line}
+done
+
+echo "++"${line}
+
+if [[ $is_all -eq 1 ]]
+then
+	echo -e $(tty)'\t\t'${USER}
+fi
+
+ls ${ls_options} --color=always | sed -e 's/.*/||  &/g'
+
+echo "++"${line}
+
 
 if [[ $has_git -eq 1 ]]
 then
