@@ -208,12 +208,16 @@ then
 	if [[ $is_module -eq 1 && $has_func -ne 1 ]]
 	then
 		f_name=${name%%.*}
+		m_name=${f_name}${ext_2}
 
 		# Module template
 
-		echo "" 		>> $name
-		echo "void ${f_name}()" >> $name
-		echo "{" 		>> $name
+		echo "" 			>> $name
+		echo '#include "'${m_name}'"' 	>> $name
+		echo ""		 		>> $name
+		echo "" 			>> $name
+		echo "void ${f_name}()" 	>> $name
+		echo "{" 			>> $name
 
 		if [[ $has_doc -eq 1 ]]
 		then
@@ -222,14 +226,12 @@ then
 			echo -e "\t*/" >> $name
 		fi
 
-		echo -e "\t" 		>> $name
-		echo "}" 		>> $name
-		echo "" 		>> $name
+		echo -e "\t" 	>> $name
+		echo "}" 	>> $name
+		echo ""		>> $name
 
 
 		# Taking care of the header
-
-		m_name=${f_name}${ext_2}
 
 		touch $m_name
 
