@@ -34,7 +34,7 @@
 #
 # date :
 #	started      :  13 / 11 / 2024
-#	last updated :	26 / 11 / 2024
+#	last updated :	 3 / 12 / 2024
 
 
 #!/bin/bash
@@ -207,6 +207,8 @@ then
 
 	if [[ $is_module -eq 1 && $has_func -ne 1 ]]
 	then
+		f_name=${name%%.*}
+
 		# Module template
 
 		echo "" 		>> $name
@@ -227,7 +229,6 @@ then
 
 		# Taking care of the header
 
-		f_name=${name%%.*}
 		m_name=${f_name}${ext_2}
 
 		touch $m_name

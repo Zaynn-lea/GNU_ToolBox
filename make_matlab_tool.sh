@@ -13,6 +13,7 @@
 #
 #	- -f : make a function file instead of a script file
 #	- -d : add a documentation template at the start of the file
+#	- -p : add the pause keyword at the end doesn't work with -f
 #
 #
 # It will :
@@ -26,8 +27,8 @@
 #	Gély Léandre :: https://github.com/Zaynn-lea
 #
 # date :
-#	started      :   4 / 11 / 224
-#	last updated :	20 / 11 / 2024
+#	started      :   4 / 11 / 2024
+#	last updated :	 3 / 12 / 2024
 
 
 #!/bin/bash
@@ -39,6 +40,7 @@ then
 
 	has_doc=0
 	is_func=0
+	has_pause=0
 
 	ext='.m'
 
@@ -53,8 +55,9 @@ then
 			for (( i=1 ; i<${#arg} ; i++ ))
 			do
 				case ${arg:$i:1} in
-					(d) has_doc=1 ;;
-					(f) is_func=1 ;;
+					(d) has_doc=1   ;;
+					(f) is_func=1   ;;
+					(p) has_pause=1 ;;
 				esac
 			done
 		else
@@ -141,6 +144,13 @@ then
 		echo "% |   Main Script :  |" 	   >> $name
 		echo "% +------------------+" 	   >> $name
 		echo "" 			   >> $name
+
+		if [[ $has_pause -eq 1 ]]
+		then
+			echo "" >> $name
+			echo "pause" >> $name
+			echo "" >> $name
+		fi
 	fi
 
 	exec 3>&-

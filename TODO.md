@@ -14,14 +14,6 @@ TODO list for my GNU and bash toolbox.
 	Asked the :
 		21 / 11 / 2024
 
-- add pause option
-	Description :
-		add -p to make_matlab_tool, add `pause` at the end of the file
-	Asked by :
-		Gély Léandre
-	Asked the :
-		21 / 11 / 2024
-
 - manage TODO tools 
 	Description : 
 		Probably a script to add and update TODOs documents like this one
@@ -56,3 +48,4 @@ TODO list for my GNU and bash toolbox.
 
 
 ## STARTED :
+
