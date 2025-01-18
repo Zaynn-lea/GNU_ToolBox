@@ -138,7 +138,8 @@ then
 	echo -e "\t<meta charset=\"UTF-8\">" 		       >> $name
 	echo -e "\t<meta name=\"author\" content=\"${USER}\">" >> $name
 	echo -e "\t"					       >> $name
-	echo -e "\t<title>${name%%.*}</title>"
+	echo -e "\t"					       >> $name
+	echo -e "\t<title>${name%%.*}</title>"		       >> $name
 
 	echo ""	       >> $name
 	echo "</head>" >> $name
