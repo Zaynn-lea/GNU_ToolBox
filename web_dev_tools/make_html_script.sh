@@ -126,14 +126,14 @@ then
 
 	# Main template :
 
-	echo ""			 >> $name
-	echo "<!DOCTYPE html>" 	 >> $name
-	echo ""			 >> $name
-	echo ""			 >> $name
-	echo "<html lang=\"en\"" >> $name
-	echo ""			 >> $name
-	echo "<head>"		 >> $name
-	echo ""			 >> $name
+	echo ""			  >> $name
+	echo "<!DOCTYPE html>" 	  >> $name
+	echo ""			  >> $name
+	echo ""			  >> $name
+	echo "<html lang=\"en\">" >> $name
+	echo ""			  >> $name
+	echo "<head>"		  >> $name
+	echo ""			  >> $name
 
 	echo -e "\t<meta charset=\"UTF-8\">" 		       >> $name
 	echo -e "\t<meta name=\"author\" content=\"${USER}\">" >> $name
@@ -151,9 +151,15 @@ then
 	echo -e "\t\t" 	      >> $name
 	echo -e "\t</header>" >> $name
 
+	echo "" >> $name
+	echo "" >> $name
+
 	echo -e "\t<main>"  >> $name
 	echo -e "\t\t"	    >> $name
 	echo -e "\t</main>" >> $name
+
+	echo "" >> $name
+	echo "" >> $name
 
 	echo -e "\t<footer>"  >> $name
 	echo -e "\t\t"	      >> $name
