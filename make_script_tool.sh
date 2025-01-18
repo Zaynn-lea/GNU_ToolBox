@@ -51,7 +51,9 @@ then
 		then
 			for (( i=1 ; i<${#arg} ; i++ ))
 			do
-				(d) has_doc=1 ;;
+				case ${arg:$i:1} in
+					(d) has_doc=1 ;;
+				esac
 			done
 		else
 			name=$arg

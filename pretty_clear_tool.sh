@@ -84,6 +84,9 @@ fi
 clear
 
 
+echo ""
+
+
 max_line_length=$(( $(ls ${ls_options} | sed -e 's/.*/||  &\t/g' | wc -L) - 2 ))
 
 
@@ -124,6 +127,9 @@ then
 	echo ''
 	make
 fi
+
+
+echo ""
 
 
 exit 0

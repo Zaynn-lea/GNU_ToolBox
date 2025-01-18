@@ -34,7 +34,7 @@
 #
 # date :
 #	started      :  13 / 11 / 2024
-#	last updated :	 3 / 12 / 2024
+#	last updated :	18 / 01 / 2025
 
 
 #!/bin/bash
@@ -175,6 +175,7 @@ then
 		exit 1
 	fi
 
+
 	# +---------------+
 	# |  Main Script  |
 	# +---------------+
@@ -245,7 +246,7 @@ then
 		then
 			echo "#pragma once"	   >> $m_name
 		else
-			const_name="__"${f_name^^}"__EXIST__"
+			const_name="__"${f_name^^}"__HEADER__EXIST__"
 
 			echo "#ifndef "$const_name >> $m_name
 			echo ""			   >> $m_name
@@ -402,7 +403,7 @@ then
 	exit 0
 
 else
-	# if no file name is given or if too many arguments ar given :
+	# if no file name is given or if too many arguments are given :
 	echo "You have to give at least one arguments, the name of the file" >&2
 	exit 1
 fi

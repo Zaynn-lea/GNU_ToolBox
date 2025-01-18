@@ -72,6 +72,8 @@ mkmatlab=${here}'/make_matlab_tool.sh'
 
 mkscript=${here}'/make_script_tool.sh'
 
+mkhtml=${here}'/web_dev_tools/make_html_script.sh'
+
 pclear=${here}'/pretty_clear_tool.sh'
 
 
@@ -85,6 +87,9 @@ alias "mkmakef"=$mkmakef
 alias "mkmatlab"=$mkmatlab
 
 alias "mkscript"=$mkscript
+
+alias "mkhtml"=$mkhtml
+alias "mkjinja"=${mkhtml}' -j'
 
 alias "pclear"=$pclear
 
@@ -113,6 +118,9 @@ then
 	alias "mkmatlabf"=${mkmatlab}' -f'
 
 	alias "mkscriptd"=${mkscript}' -d'
+
+	alias "mkhtmld"=${mkhtml}' -d'
+	alias "mkjinjad"=${mkhtml}' -jd'
 
 	alias "pcleara"=${pclear}' -a'
 	alias "pclearg"=${pclear}' -g'

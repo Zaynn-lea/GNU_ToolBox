@@ -1,4 +1,4 @@
-
+1
 # TODO list !
 
 TODO list for my GNU and bash toolbox.
@@ -49,3 +49,10 @@ TODO list for my GNU and bash toolbox.
 
 ## STARTED :
 
+- Web dev tools and templates 
+	Description :
+		Add some tools to have html templates, js templates, css templates, website templates, etc...
+	Asked by :
+		Gély Léandre
+	Asked the :
+		17 / 01 / 2025
