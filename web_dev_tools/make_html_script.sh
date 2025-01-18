@@ -39,17 +39,11 @@ then
 
 
 	# Parser to take care of the parameters
-	# takes care of multi-char, single-char optins and standards parameters, in ths order
+	# single-char optins and standards parameters, in ths order
 
 	for arg in "$@"
 	do
-		if [[ ${arg:0:2} = '--' ]]
-		then
-			# Multi-characters options :
-
-			# None needed yet
-
-		elif [[ ${arg:0:1} = '-' ]]
+		if [[ ${arg:0:1} = '-' ]]
 		then
 			# Single-character options :
 
@@ -80,7 +74,7 @@ then
 	then
 		echo "You must give a name to your file/project." >&2
 		exit 1
-	done
+	fi
 
 	# Dealing with the possibility of a file having the same name
 	if [[ -e ${name}${ext} ]]
@@ -94,6 +88,8 @@ then
 			i=$((i+1))
 		done
 	fi
+
+	name=${name}${ext}
 
 
 	# +-----------------+
