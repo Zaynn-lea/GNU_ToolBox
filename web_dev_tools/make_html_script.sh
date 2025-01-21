@@ -7,6 +7,8 @@
 #	- -d : add a documentation tempalte at the start of the file
 #	- -j : change the document from html to jinja
 #
+#	- -css : ccreate and link a css stylesheet
+#
 #
 # It will :
 #	- create a file
@@ -20,7 +22,7 @@
 #
 # Date :
 #	started      :  18 / 01 / 25
-#	last updated :  18 / 01 / 25
+#	last updated :  21 / 01 / 25
 
 
 #!/bin/bash
@@ -34,16 +36,24 @@ then
 	has_doc=0
 	is_jinja=0
 
+	has_css=0
 
 	ext='.html'
 
 
 	# Parser to take care of the parameters
-	# single-char optins and standards parameters, in ths order
+	# takes care of multi-char options, single-char options and standards parameters, in ths order
 
 	for arg in "$@"
 	do
-		if [[ ${arg:0:1} = '-' ]]
+		if [[ ${arg:0:2} = '--' ]]
+		then
+			# Multi-character options :
+
+			case ${arg:2} in
+				(css) has_css=1 ;;
+			esac
+		elif [[ ${arg:0:1} = '-' ]]
 		then
 			# Single-character options :
 
@@ -137,9 +147,37 @@ then
 
 	echo -e "\t<meta charset=\"UTF-8\">" 		       >> $name
 	echo -e "\t<meta name=\"author\" content=\"${USER}\">" >> $name
-	echo -e "\t"					       >> $name
-	echo -e "\t"					       >> $name
-	echo -e "\t<title>${name%%.*}</title>"		       >> $name
+	echo -e "\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" >> $name
+	echo -e "\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" 		       >> $name
+	echo -e "\t"			       >> $name
+	echo -e "\t"			       >> $name
+	echo -e "\t<title>${name%%.*}</title>" >> $name
+
+	if [[ $has_css -eq 1 ]]
+	then
+		# Create and link the stylesheet
+
+		if [[ $has_doc -eq 1 ]]
+		then
+			make_css_tool.sh -d
+		else
+			make_css_tool.sh
+		fi
+
+
+		# Getting the name from make_css_tool using .TEMPORAIRE
+
+		exec 10< ~GNU_Toolbox/.TEMPORAIRE/.temporaire__make_css_tool__name.tmp
+
+		read -u 10 line
+
+		exec 10<&-
+
+
+		echo -e "\t" >> $name
+		echo -e "\t<link rel=\"stylesheet\" href=\"${line}\">" >> $name
+		echo -e "\t" >> $name
+	fi
 
 	echo ""	       >> $name
 	echo "</head>" >> $name

@@ -4,7 +4,10 @@
 #
 # There are optional arguments :
 #	- the name of the futur file, by default it is " style.css "
+#
 #	- -d : add a documetation template at the start of the file
+#
+#	- --is-connected-html : save the name into a tmp file to call it from another script
 #
 #
 # it will :
@@ -27,17 +30,26 @@
 
 has_doc=0
 
+is_connected_html=0
+
 has_name=0
 
 ext='.css'
 
 
 # Parser to take care of the parameters, if any
-# takes care of single-char options and standards parameters, in this order
+# takes care of multi-char options, single-char options and standards parameters, in this order
 
 for arg in "$@"
 do
-	if [[ ${arg:0:1} = '-' ]]
+	if [[ ${arg:0:2} = '--' ]]
+	then
+		# Multi_characters options :
+
+		case ${arg:$i} in
+			(is-connected-html) is_connected_html=1 ;;
+		esac
+	elif [[ ${arg:0:1} = '-' ]]
 	then
 		# Single-character options :
 
@@ -74,6 +86,31 @@ then
 fi
 
 name=${name}${ext}
+
+
+# if we are called from another script, we save the name for the script to know which file to call
+
+if [[ $is_connected_html -eq 1 ]]
+then
+	temp_file="~/GNU_Toolbox/.TEMPORAIRE/.temporaire__make_css_tool__name.tmp"
+
+
+	# We don't want a huge filled file so we empty it each time
+
+	if [[ -e $temp_file ]]
+	then
+		rm $temp_file
+	fi
+
+
+	touch $temp_file
+
+	exec 10> $temp_file
+
+	echo $name >> $temp_file
+
+	exec 10>&-
+fi
 
 
 # +-------------------+
