@@ -112,15 +112,15 @@ then
 		echo ""	    >> $name
 		echo ""     >> $name
 		echo "----------------------------------------------------------------------------------------------------------------------------" >> $name
-		echo ""			 	  >> $name
-		echo "Made by :"	 	  >> $name
-		echo -e "\t- "$USER		  >> $name
-		echo ""				  >> $name
-		echo "Date :"			  >> $name
-		echo -e "\tstarted     :  "$today >> $name
-		echo -e "\last updated :  "$today >> $name
-		echo "-->"			  >> $name
-		echo ""				  >> $name
+		echo ""			 	   >> $name
+		echo "Made by :"	 	   >> $name
+		echo -e "\t- "$USER		   >> $name
+		echo ""				   >> $name
+		echo "Date :"			   >> $name
+		echo -e "\tstarted     :  "$today  >> $name
+		echo -e "\tlast updated :  "$today >> $name
+		echo "-->"			   >> $name
+		echo ""				   >> $name
 	fi
 
 

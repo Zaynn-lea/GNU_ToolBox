@@ -36,7 +36,9 @@ then
 	then
 		name="Makefile"
 
-	elif [[ -e $1 ]]
+	fi
+
+	if [[ -e $1 ]]
 	then
 		name=${1}_new
 
@@ -47,7 +49,7 @@ then
 			i=$((i+1))
 		done
 	else
-		$name=$1
+		name=$1
 	fi
 
 
@@ -73,6 +75,8 @@ then
 	exec 3>&-
 
 	nano $name
+
+	exit 0
 
 else
 	# if no file name is given or additionnal parameters
