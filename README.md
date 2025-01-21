@@ -28,6 +28,10 @@ All script have a their own more specific documentation at the begining of each 
 
 - make_C_tool.sh	: tool to make C files and projects
 
+- make_css_tool.sh	: tool to make css stylesheets
+
+- make_html_tool.sh	: tool to make html and jinja projects
+
 - make_makefile_tool.sh	: tool to make Makefiles for C projects
 
 - make_matlab_tool.sh	: tool to make matlab scripts and functions

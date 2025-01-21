@@ -102,7 +102,7 @@ then
 	echo -e "\t- "$USER		     >> $name
 	echo ""				     >> $name
 	echo "Date :"			     >> $name
-	echo -e "\tstarted	:  "$today   >> $name
+	echo -e "\tstarted      :  "$today   >> $name
 	echo -e "\tlast updated :  "$today   >> $name
 	echo "*/"			     >> $name
 	echo ""				     >> $name
@@ -116,8 +116,8 @@ echo "" >> $name
 echo "/* css reset */" 		     >> $name
 echo ""				     >> $name
 echo "* {"			     >> $name
-echo -e "\tmargin: 	0;"	     >> $name
-echo -e "\tpadding: 	0;"	     >> $name
+echo -e "\tmargin:      0;"	     >> $name
+echo -e "\tpadding:     0;"	     >> $name
 echo -e "\tbox-sizzing: border-box;" >> $name
 echo "}"			     >> $name
 
