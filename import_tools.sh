@@ -25,7 +25,7 @@
 #
 # Date :
 #	started      :  06 / 11 / 24
-#	last updated :  20 / 11 / 24
+#	last updated :  22 / 01 / 25
 
 
 #!/bin/bash
@@ -72,7 +72,9 @@ mkmatlab=${here}'/make_matlab_tool.sh'
 
 mkscript=${here}'/make_script_tool.sh'
 
-mkhtml=${here}'/web_dev_tools/make_html_script.sh'
+mkhtml=${here}'/web_dev_tools/make_html_tool.sh'
+
+mkcss=${here}'/web_dev_tools/make_css_tool.sh'
 
 pclear=${here}'/pretty_clear_tool.sh'
 
@@ -90,6 +92,8 @@ alias "mkscript"=$mkscript
 
 alias "mkhtml"=$mkhtml
 alias "mkjinja"=${mkhtml}' -j'
+
+alias "mkcss"=${mkcss}
 
 alias "pclear"=$pclear
 
@@ -121,6 +125,8 @@ then
 
 	alias "mkhtmld"=${mkhtml}' -d'
 	alias "mkjinjad"=${mkhtml}' -jd'
+
+	alias "mkcssd"=${mkcss}' -d'
 
 	alias "pcleara"=${pclear}' -a'
 	alias "pclearg"=${pclear}' -g'

@@ -46,7 +46,7 @@ do
 	then
 		# Multi_characters options :
 
-		case ${arg:$i} in
+		case ${arg:2} in
 			(is-connected-html) is_connected_html=1 ;;
 		esac
 	elif [[ ${arg:0:1} = '-' ]]
