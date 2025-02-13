@@ -36,9 +36,7 @@ then
 	then
 		name="Makefile"
 
-	fi
-
-	if [[ -e $1 ]]
+	elif [[ -e $1 ]]
 	then
 		name=${1}_new
 

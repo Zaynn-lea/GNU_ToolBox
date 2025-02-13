@@ -18,11 +18,11 @@
 #--------------------------------------------------------------------------------
 #
 # Made by :
-#	- zaynn
+#	- Gély Léandre :: https://github.com/Zaynn-lea
 #
 # Date :
 #	started      :  19 / 01 / 25
-#	last updated :  21 / 01 / 25
+#	last updated :  13 / 02 / 25
 
 
 #!/bin/bash
@@ -88,28 +88,11 @@ fi
 name=${name}${ext}
 
 
-# if we are called from another script, we save the name for the script to know which file to call
+# if we are called from another script, we give out the name of the file to pipe it
 
 if [[ $is_connected_html -eq 1 ]]
 then
-	temp_file="~/GNU_Toolbox/.TEMPORAIRE/.temporaire__make_css_tool__name.tmp"
-
-
-	# We don't want a huge filled file so we empty it each time
-
-	if [[ -e $temp_file ]]
-	then
-		rm $temp_file
-	fi
-
-
-	touch $temp_file
-
-	exec 10> $temp_file
-
-	echo $name >> $temp_file
-
-	exec 10>&-
+	echo $name
 fi
 
 
@@ -224,7 +207,11 @@ echo "" >> $name
 
 exec 3>&-
 
-nano $name
+if [[ $is_connected_html -ne 1 ]]
+then
+	nano $name
+fi
 
 
 exit 0
+

@@ -1,4 +1,5 @@
 
+
 # Utility script to help build html files and projects
 #
 #
@@ -22,7 +23,7 @@
 #
 # Date :
 #	started      :  18 / 01 / 25
-#	last updated :  21 / 01 / 25
+#	last updated :  13 / 02 / 25
 
 
 #!/bin/bash
@@ -159,19 +160,10 @@ then
 
 		if [[ $has_doc -eq 1 ]]
 		then
-			make_css_tool.sh -d
+			line=$(source ~/GNU_ToolBox/web_dev_tools/make_css_tool.sh --is-connected-html -d)
 		else
-			make_css_tool.sh
+			line=$(source ~/GNU_ToolBox/web_dev_tools/make_css_tool.sh --is-connected-html)
 		fi
-
-
-		# Getting the name from make_css_tool using .TEMPORAIRE
-
-		exec 10< ~GNU_Toolbox/.TEMPORAIRE/.temporaire__make_css_tool__name.tmp
-
-		read -u 10 line
-
-		exec 10<&-
 
 
 		echo -e "\t" >> $name
