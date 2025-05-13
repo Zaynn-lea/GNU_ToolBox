@@ -1,0 +1,8 @@
+
+#temporary files used by the project when running
+*.tmp
+.TEMPORAIRE/*.tmp
+
+
+# Temporary work/development files
+*.swp

@@ -17,7 +17,7 @@
 #	- -l : a lighter header
 #	- -a : a heavier header with more informations, takes priority over -l
 #	- -m : execute a make after the pretty clear, when working in C/C++ for example
-#	- -g : execute a git status after the pretty clear
+#	- -g : show you the branches and status of the current git repository
 #
 #--------------------------------------------------------------------------------
 #
@@ -26,7 +26,7 @@
 #
 # Date :
 #	started      :  06 / 11 / 24
-#	last updated :  27 / 11 / 24
+#	last updated :  13 / 05 / 25
 
 
 #!/bin/bash
@@ -119,6 +119,7 @@ fi
 if [[ $has_git -eq 1 ]]
 then
 	echo ''
+	git branch
 	git status
 fi
 
